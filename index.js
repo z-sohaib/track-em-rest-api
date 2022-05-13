@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-import ConnectDB from "./app/utils/db_init.js";
+const ConnectDB = require("./app/utils/db_init.js");
 
 dotenv.config()
 
@@ -15,6 +15,8 @@ var corsOptions = {
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/employees', EmployeeRoutes)
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the application." });
