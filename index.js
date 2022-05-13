@@ -1,4 +1,10 @@
 const express = require("express");
+const dotenv = require("dotenv");
+import ConnectDB from "./app/utils/db_init.js";
+
+dotenv.config()
+
+ConnectDB()
 
 const app = express();
 
