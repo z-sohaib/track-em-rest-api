@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const ConnectDB = require("./app/utils/db_init.js");
+const EmployeeRoutes = require("./app/routes/EmployeeRoutes")
 
 dotenv.config()
 

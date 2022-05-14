@@ -1,10 +1,10 @@
-import asyncHandler from 'express-async-handler'
-import Employee from '../models/Employee'
+const asyncHandler = require('express-async-handler')
+const Employee = require('../models/Employee')
 
 // @desc Fetch all employees
 // @route GET /api/employees
 // @access Public
-const getEmployees = asyncHandler(async (req, res) => {
+exports.getEmployees = asyncHandler(async (req, res) => {
     const employees = await Employee.find()
     res.json({employees, message: "Employees Fetched Successfully"})
 })
@@ -12,7 +12,7 @@ const getEmployees = asyncHandler(async (req, res) => {
 // @desc Fetch single employee
 // @route /api/employees/:id
 // access Public
-const getEmployeeById = asyncHandler(async (req, res) => {
+exports.getEmployeeById = asyncHandler(async (req, res) => {
     const employee = await Employee.findById(req.params.id)
 
     if(employee) {
@@ -26,7 +26,7 @@ const getEmployeeById = asyncHandler(async (req, res) => {
 // @desc Delete an employee
 // @route DELETE /api/employees/:id
 // @access Public
-const deleteEmployee = asyncHandler(async (req, res) => {
+exports.deleteEmployee = asyncHandler(async (req, res) => {
     const employee = await Employee.findById(req.params.id)
 
     if (employee) {
@@ -41,7 +41,7 @@ const deleteEmployee = asyncHandler(async (req, res) => {
 // @desc Create an employee
 // @route POST /api/employees
 // @access Public
-const createEmployee = asyncHandler(async (req, res) => {
+exports.createEmployee = asyncHandler(async (req, res) => {
 
     const employee = new Employee({
         fname: req.body.fname,
@@ -57,7 +57,7 @@ const createEmployee = asyncHandler(async (req, res) => {
 // @desc Update an employee
 // @route PUT /api/employees/:id
 // @access Public
-const updateEmployee = asyncHandler(async (req,res) => {
+exports.updateEmployee = asyncHandler(async (req,res) => {
     const {
         fname,
         lname,
@@ -77,11 +77,3 @@ const updateEmployee = asyncHandler(async (req,res) => {
         res.json({updatedEmployee, message: "Employee updated"})
     }
 })
-
-export {
-    getEmployees,
-    getEmployeeById,
-    deleteEmployee,
-    createEmployee,
-    updateEmployee,
-}

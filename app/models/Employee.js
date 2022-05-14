@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const EmployeeSchema = mongoose.Schema({
     fname: {type: String, required: true},
@@ -13,4 +13,4 @@ const EmployeeSchema = mongoose.Schema({
 
 const Employee = mongoose.model('User', EmployeeSchema)
 
-export default Employee
+module.exports = Employee
