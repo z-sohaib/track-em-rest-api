@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const ConnectDB = require("./app/utils/db_init.js");
 const EmployeeRoutes = require("./app/routes/EmployeeRoutes")
 
@@ -9,9 +10,7 @@ ConnectDB()
 
 const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:8080"
-};
+app.use(cors())
 
 app.use(express.json());
 
