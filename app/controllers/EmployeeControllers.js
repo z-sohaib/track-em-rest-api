@@ -44,10 +44,13 @@ exports.deleteEmployee = asyncHandler(async (req, res) => {
 exports.createEmployee = asyncHandler(async (req, res) => {
 
     const employee = new Employee({
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        productivity_score: req.body.productivity_score,
+        name: req.body.name,
+        productivity: req.body.productivity,
+        state: req.body.state,
+        day: req.body.day,
+        week: req.body.week,
+        month: req.body.month,
+        year: req.body.year,
     })
 
     const createdEmployee = await employee.save()
@@ -59,19 +62,15 @@ exports.createEmployee = asyncHandler(async (req, res) => {
 // @access Public
 exports.updateEmployee = asyncHandler(async (req,res) => {
     const {
-        fname,
-        lname,
-        email,
-        productivity_score
+        name,
+        state,
     } = req.body
 
     const employee = await Employee.findById(req.params.id)
 
     if (employee) {
-        employee.fname = fname
-        employee.lname = lname
-        employee.email = email
-        employee.productivity_score = productivity_score
+        employee.name = name
+        employee.state = state
 
         const updatedEmployee = await employee.save()
         res.json({updatedEmployee, message: "Employee updated"})
