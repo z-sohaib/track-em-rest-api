@@ -14,6 +14,6 @@ const EmployeeSchema = mongoose.Schema({
     timestamps: true,
 })
 
-const Employee = mongoose.model('User', EmployeeSchema)
+const Employee = mongoose.model('Employee', EmployeeSchema)
 
 module.exports = Employee
